@@ -13,6 +13,7 @@ public class ClientHandler extends Thread {
     static int c =0;
     public ClientHandler(Socket s) {
         this.s = s;
+        c++;
         try {
             // per parlare
             pr = new PrintWriter(s.getOutputStream(), true);
@@ -25,11 +26,11 @@ public class ClientHandler extends Thread {
 
     public void run() {
  
-        c++;
+       
         try {
             System.out.println(br.readLine());
             pr.println("Ciao come ti chiami?"); // invio messaggio
-            String nome = br.readLine(); // ricevo: il peso
+            String nome = br.readLine().toUpperCase(); // ricevo: il peso
             System.out.println(nome);
             pr.println("Benvenuto " + nome + "sei l'utente " +c ); // invio messaggio
            
