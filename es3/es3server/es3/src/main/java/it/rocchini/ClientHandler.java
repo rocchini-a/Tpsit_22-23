@@ -10,19 +10,25 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.ArrayList;
 
 import javax.xml.crypto.Data;
 
 public class ClientHandler extends Thread {
     private Socket s;
+    public Socket getS(){
+        return s;
+    }
     private PrintWriter pr = null;
     private BufferedReader br = null;
     private int c;
+    private ArrayList<ClientHandler> clients;
     String comando;
     String nome = "Server a";
-    public ClientHandler(Socket s, int c) {
+    public ClientHandler(Socket s, int c, ArrayList<ClientHandler> x) {
         this.s = s;
         this.c =c;
+        this.client=x;
         try {
             // per parlare
             pr = new PrintWriter(s.getOutputStream(), true);
@@ -65,6 +71,14 @@ public class ClientHandler extends Thread {
                 if(comando.equals("fine")){
                     pr.println("connessione chiusa con l'utente " + c);
                     s.close();
+                    break;
+                }
+                if(comando.equals("chiudi")){
+                    for(int i =0; i < clients.size(); i++){
+                        System.out.println(i);
+                        clients.get(i).getS().close();
+                        
+                    }
                     break;
                 }
 
