@@ -1,6 +1,7 @@
 package com.example;
 import java.io.File;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
@@ -13,49 +14,26 @@ public class App
     public static void main( String[] args ) throws Exception 
     {
         System.out.println("------------");
-        LocalDate d1 = LocalDate.of(2004, 6, 03);
-        LocalDate d2 = LocalDate.of(2004, 9, 13);
-        LocalDate d3 = LocalDate.of(2004, 11, 25);
-        LocalDate d4 = LocalDate.of(2004, 5, 28);
-        LocalDate d5 = LocalDate.of(2004, 9, 13);
-        Studente s1 = new Studente(1, "alessia", "rocchini", d1, 95);
-       /* Studente s2 = new Studente("mattia", "teriaca", d2, 95);
-        Studente s3 = new Studente("alessia", "caruso", d3, 80);
-        Studente s4 = new Studente("christian", "vivoli", d4,70);
-        Studente s5 = new Studente("cesare", "tei", d5, 75);*/ 
+        Studenti listaStudenti = new Studenti();
+        Studente s1 = new Studente(1, "alessia", "rocchini", "2004-06-03", 95);
+        Studente s2 = new Studente(2,"mattia", "teriaca", "2004-09-13", 95);
+        Studente s3 = new Studente(3, "alessia", "caruso", "2004-11-25", 80);
+        Studente s4 = new Studente(4, "christian", "vivoli", "2004-05-28",70);
+        Studente s5 = new Studente(5, "cesare", "tei", "2004-11-03", 75);
 
-
+        listaStudenti.add(s1);
+        listaStudenti.add(s2);
+        listaStudenti.add(s3);
+        listaStudenti.add(s4);
+        listaStudenti.add(s5);
 
         XmlMapper xmlMapper = new XmlMapper();
         
         // Serializzazione        
-        xmlMapper.writeValue(new File("test.xml"), s1);
-        String myXml1 = xmlMapper.writeValueAsString(s1);
+        xmlMapper.writeValue(new File("studenti.xml"), listaStudenti);
+        String myXml1 = xmlMapper.writeValueAsString(listaStudenti);
         System.out.println("Oggetto serializzato:" + myXml1);
 
-      /* xmlMapper.writeValue(new File("test.xml"), s2);
-        String myXml2 = xmlMapper.writeValueAsString(s2);
-        System.out.println("Oggetto serializzato:" + myXml2);
-
-        xmlMapper.writeValue(new File("test.xml"), s3);
-        String myXml3 = xmlMapper.writeValueAsString(s3);
-        System.out.println("Oggetto serializzato:" + myXml3);
-
-
-        xmlMapper.writeValue(new File("test.xml"), s4);
-        String myXml4 = xmlMapper.writeValueAsString(s4);
-        System.out.println("Oggetto serializzato:" + myXml4);
-
-        xmlMapper.writeValue(new File("test.xml"), s5);
-        String myXml5 = xmlMapper.writeValueAsString(s5);
-        System.out.println("Oggetto serializzato:" + myXml5);*/  
-        
-        // Deserializzazione        
-        Studente c2 = xmlMapper.readValue(myXml1, Studente.class);
-        System.out.println("Oggetto deserializzato da stringa:" + c2.getNome());
-
-       // Studente c3 = xmlMapper.readValue(new File("test.xml"), Studente.class);
-        //System.out.println("Oggetto deserializzato da file: " + c3.getDataDiNascita());
     }
 
 

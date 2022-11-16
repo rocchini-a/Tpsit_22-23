@@ -6,7 +6,7 @@ public class Studente {
     private int id;
     private String nome;
     private String cognome;
-    private LocalDate dataDiNascita;
+    private String dataDiNascita;
     private int votoesame;
 
     //costruttore vuoto
@@ -17,7 +17,7 @@ public class Studente {
 
     //costruttore  pieno
    
-    public Studente(int id, String nome, String cognome, LocalDate dataDiNascita, int votoesame) {
+    public Studente(int id, String nome, String cognome, String dataDiNascita, int votoesame) {
         this.id =id;
         this.nome = nome;
         this.cognome = cognome;
@@ -34,11 +34,11 @@ public class Studente {
         this.cognome = cognome;
     }
 
-    public LocalDate getDataDiNascita() {
+    public String getDataDiNascita() {
         return dataDiNascita;
     }
 
-    public void setDataDiNascita(LocalDate dataDiNascita) {
+    public void setDataDiNascita(String dataDiNascita) {
         this.dataDiNascita = dataDiNascita;
     }
 
