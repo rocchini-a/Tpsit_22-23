@@ -1,6 +1,6 @@
 <?php
-echo"ciao a tutti"
-phpinfo();s
+echo"ciao a tutti";
+phpinfo();
 ?>	
 
 
